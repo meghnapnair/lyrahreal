@@ -11,7 +11,7 @@ if(isset($_REQUEST['btnSubmit']))
     $r= mysqli_fetch_array($s);
     if($r[0]==0)    //to check whether the username exist
     {
-        echo '<script>alert("Username doesnt exist")</script>';
+        echo '<script>alert("Username doesnt exist.Please check your Email id and Password")</script>';
     }
     else
     {

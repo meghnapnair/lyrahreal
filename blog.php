@@ -241,7 +241,7 @@ include 'connection.php';
                 <div class="col-md-4 p-0">
                     <div class="card">
                         <a href="single.html">
-                            <img class="card-img-top" src="images/blg1.jpg" alt="Card image cap">
+                            <img class="card-img-top" src="images/1.jpg" alt="Card image cap">
                         </a>
                         <div class="card-body">
                             <h5 class="card-title blg_w3ls">
@@ -252,7 +252,7 @@ include 'connection.php';
                     </div>
                     <div class="card">
                         <a href="single.html">
-                            <img class="card-img-top" src="images/a2.jpg" alt="Card image cap">
+                            <img class="card-img-top" src="images/2.jpg" alt="Card image cap">
                         </a>
                         <div class="card-body">
                             <h5 class="card-title blg_w3ls">
@@ -280,7 +280,7 @@ include 'connection.php';
                     </div>
                     <div class="card text-white text-center">
                         <a href="single.html">
-                            <img class="card-img" src="images/a3.jpg" alt="Card image">
+                            <img class="card-img" src="images/3.jpg" alt="Card image">
                         </a>
                         <div class="card text-center p-3">
                             <blockquote class="blockquote mb-0">
@@ -310,7 +310,7 @@ include 'connection.php';
                 <div class="col-md-4 p-0">
                     <div class="card">
                         <a href="single.html">
-                            <img class="card-img" src="images/blg2.jpg" alt="Card image">
+                            <img class="card-img" src="images/4.jpg" alt="Card image">
                         </a>
                     </div>
                     <div class="card p-3 text-right">
@@ -335,7 +335,7 @@ include 'connection.php';
                             </p>
                         </div>
                         <a href="single.html">
-                            <img class="card-img-top" src="images/i10.jpg" alt="Card image cap">
+                            <img class="card-img-top" src="images/i1.jpg" alt="Card image cap">
                         </a>
                     </div>
                 </div>
