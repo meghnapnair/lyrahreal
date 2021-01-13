@@ -30,7 +30,7 @@ $email=$_SESSION['email'];
                             echo '<tr><td>PRODUCT :'.$r['pName'].'</td></tr>';
                             echo '<tr><td>RATE :'.$r['pRate'].'</td></tr>';
                             echo '<tr><td>QUANTITY :'.$r['qty'].'</td></tr>';
-                            
+                            echo '<tr><td>SIZE :'.$r['size'].'</td></tr>';
                             echo '<tr><td><a href="remove_from_wishlist.php?id='.$r['wId'].'">Remove from wishlist</a></td></tr>';
                         }
                    ?> 

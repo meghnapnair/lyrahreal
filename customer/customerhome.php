@@ -97,7 +97,7 @@ include '../connection.php';
                         </a>
                         <!-- sigin and sign up -->
                         <!-- shopping cart -->
-                       <a href="cart.php">
+                         <a href="cart.php">
                             <img src="../images/cart.png" height="50px" width="50px;">
                         </a>
                         <!-- //shopping cart ends here -->

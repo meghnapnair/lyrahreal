@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'header.php';
+include 'header.html';
 include '../connection.php';
 $email=$_SESSION['email'];
 $id=$_GET['id'];

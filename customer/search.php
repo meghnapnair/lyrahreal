@@ -277,6 +277,7 @@ include '../connection.php';
             $p=$_POST['price'];
             $cat=$_POST['subcat'];
             $p1=0; $p2=0;
+//            echo "hhhhhh".$cat;
             if($p=="Below 500")
                 $p1=0; $p2=500;
             if($p=="500-1000")
@@ -320,45 +321,7 @@ include '../connection.php';
                 <!-- footer-top -->
                 
                 <!-- //footer-top -->
-                <div class="footer-bottomv2 py-5">
-                    <div class="container">
-                        <ul class="bottom-links-agile">
-                            <li>
-                                <a href="index.html">Home</a>
-                            </li>
-                            <li>
-                                <a href="about.html">About Us</a>
-                            </li>
-                            <li>
-                                <a href="shop.html">Shop</a>
-                            </li>
-                            <li>
-                                <a href="contact.html">Contact</a>
-                            </li>
-
-                        </ul>
-                        <h3 class="text-center follow">Follow Us</h3>
-                        <ul class="social-iconsv2 agileinfo">
-                            <li>
-                                <a href="#">
-                                    <i class="facebook"></i>
-                                </a>
-                            </li>
-                          
-                            <li>
-                                <a href="#">
-                                    <i class="youtube"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="instagram"></i>
-                                </a>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                </div>
+                
             </div>
             <div class="container-fluid py-5 footer-copy_w3ls">
                 <div class="d-lg-flex justify-content-between">

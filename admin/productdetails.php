@@ -31,59 +31,15 @@ $id=$_GET['id'];
                             echo '<tr><td>RATE :'.$r['pRate'].'</td></tr>';
                             echo '<tr><td>STATUS : '.$r['pStatus'].'</td></tr>';
                             if($r['pStatus']=='Out of stock')
-                            echo '<tr><td><a href="productdetails.php?id='.$r['pId'].'">Mark as In stock</a></td></tr>';
-                            $qry="select avg(rating) from tblrating where pId='".$r['pId']."'";
-                            $res= mysqli_query($conn, $qry);
-                            $count= mysqli_num_rows($res);
-                            if($count>0)
-                            {
-                                $row= mysqli_fetch_array($res);
-                                $rating=$row[0];
-                                if($rating==1)
-                                {
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
-                                    echo '<img src="../images/unfilledstar.png" height="60px" width="60px">';
-                                    echo '<img src="../images/unfilledstar.png" height="60px" width="60px">';
-                                    echo '<img src="../images/unfilledstar.png" height="60px" width="60px">';
-                                    echo '<img src="../images/unfilledstar.png" height="60px" width="60px">';
-                                }
-                                if($rating==2)
-                                {
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
-                                 echo '<img src="../images/unfilledstar.png" height="60px" width="60px">';
-                                 echo '<img src="../images/unfilledstar.png" height="60px" width="60px">';
-                                 echo '<img src="../images/unfilledstar.png" height="60px" width="60px">';
-                                }
-                                if($rating==3)
-                                {
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
-                                    echo '<img src="../images/unfilledstar.png" height="60px" width="60px">';
-                                    echo '<img src="../images/unfilledstar.png" height="60px" width="60px">';
-                                }
-                                if($rating==4)
-                                {
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
-                                    echo '<img src="../images/unfilledstar.png" height="60px" width="60px">';
-                                }
-                                if($rating==5)
-                                {
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
-                                }
-                            }
+                            echo '<tr><td><a href="stock.php?id='.$r['pId'].'&status=1">Mark as In stock</a></td></tr>';
+                            if($r['pStatus']=='In stock')
+                                
+                            echo '<tr><td><a href="stock.php?id='.$r['pId'].'&status=0">Mark as out of stock</a></td></tr>';
+                            echo '<tr><td><a href="stock.php?id='.$r['pId'].'&status=-1">Delete product</a></td></tr>';
                         }
                    ?> 
         </table>
-    <table  style="margin:-450px 100px 50px 600px;">
+    <table  style="margin:-450px 100px 200px 600px;">
             
             <?php
                         $q="select * from tblimages where pId='$id'";

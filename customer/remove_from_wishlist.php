@@ -1,6 +1,6 @@
 <?php
 session_start(); //to start the session
-include 'header.php';
+include 'header.html';
 include '../connection.php';
 $id=$_GET['id'];
 $q="delete from tblwishlist where wId='$id'";

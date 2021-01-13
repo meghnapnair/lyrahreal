@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'header.php';
+include 'header.html';
 include '../connection.php';
 $id=$_GET['id'];
 $email=$_SESSION['email'];
@@ -40,8 +40,6 @@ if($s)
 {
             echo '<script>location.href="orders.php"</script>';
 }
-else
-echo $q;
 }
 if(isset($_POST['online'])){
     $q="select oTotal,shipping from tblordermaster where oid='$id'";

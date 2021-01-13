@@ -92,7 +92,7 @@ $cat=$_GET['cat'];
                         </a>
                         <!-- sigin and sign up -->
                         <!-- shopping cart -->
-                        <a href="cart.php">
+                         <a href="cart.php">
                             <img src="../images/cart.png" height="50px" width="50px;">
                         </a>
                         <!-- //shopping cart ends here -->
@@ -246,7 +246,7 @@ $cat=$_GET['cat'];
     <table  style="margin:50px; ">
             
             <?php
-                        $q="select * from tblproduct where subid='$cat' order by pId desc";
+                        $q="select * from tblproduct where subid='$cat' and pStatus='In stock' order by pId desc";
                         $s= mysqli_query($conn, $q);
                         while($r= mysqli_fetch_array($s))
                         {
@@ -326,7 +326,45 @@ $cat=$_GET['cat'];
                 <!-- footer-top -->
                 
                 <!-- //footer-top -->
-              
+                <div class="footer-bottomv2 py-5">
+                    <div class="container">
+                        <ul class="bottom-links-agile">
+                            <li>
+                                <a href="index.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="about.html">About Us</a>
+                            </li>
+                            <li>
+                                <a href="shop.html">Shop</a>
+                            </li>
+                            <li>
+                                <a href="contact.html">Contact</a>
+                            </li>
+
+                        </ul>
+                        <h3 class="text-center follow">Follow Us</h3>
+                        <ul class="social-iconsv2 agileinfo">
+                            <li>
+                                <a href="#">
+                                    <i class="facebook"></i>
+                                </a>
+                            </li>
+                          
+                            <li>
+                                <a href="#">
+                                    <i class="youtube"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="instagram"></i>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div class="container-fluid py-5 footer-copy_w3ls">
                 <div class="d-lg-flex justify-content-between">

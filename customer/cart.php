@@ -32,9 +32,10 @@ $total=0;
                             echo '<tr><td>PRODUCT :'.$r['pName'].'</td></tr>';
                             
                             echo '<tr><td>QUANTITY :'.$r['qty'].'</td></tr>';
+                            echo '<tr><td>SIZE :'.$r['size'].'</td></tr>';
                             echo '<tr><td>RATE :'.($r['pRate']*$r['qty']).'</td></tr>';
                             
-                            echo '<tr><td><a href="remove_from_cart.php?id='.$r['cartId'].'">Remove from cart</a> | <a href="cartbuy.php?id='.$r['pId'].'&qty='.$r['qty'].'">Buy now</a></td></tr>';
+                            echo '<tr><td><a href="remove_from_cart.php?id='.$r['cartId'].'">Remove from cart</a> | <a href="buy.php?id='.$r['pId'].'&size='.$r['size'].'">Buy now</a></td></tr>';
                             
                         }
                    ?> 

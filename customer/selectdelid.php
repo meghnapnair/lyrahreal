@@ -1,5 +1,5 @@
 <?php
-include 'header.php';
+include 'header.html';
 include '../connection.php';
 $did=$_GET['id'];
 $oid=$_GET['oid'];

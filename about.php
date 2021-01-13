@@ -250,7 +250,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 
                 
                 
-                Type something about us
+                LYRAH STORE 
                 
                 
                 

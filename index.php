@@ -545,7 +545,7 @@ include 'connection.php';
                                 </div>
                                 <div class="form-group">
                                     <label for="password1" class="col-form-label">Password</label>
-                                    <input type="password" class="form-control" placeholder=" [A-Za-z][1-9][special symbols]" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" name="Password" id="password1" required="">
+                                    <input type="password" class="form-control" placeholder=" " pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" name="Password" id="password1" required="">
                                 </div>
                                 <div class="form-group">
                                     <label for="password2" class="col-form-label">Confirm Password</label>

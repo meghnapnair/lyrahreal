@@ -95,6 +95,21 @@ $email=$_SESSION['email'];
                 ?>
             </select>
         </div>
+            <div style="padding: 10px;">
+            Select size: <select name="size">
+                <option value="0">Select</option>
+                <?php
+                $q="select size from tblproductsize where pId='$id'";
+                $s= mysqli_query($conn, $q);
+                
+                while($r= mysqli_fetch_array($s))
+                {
+                    echo '<option>'.$r[0].'</option>';
+                    
+                }
+                ?>
+            </select>
+        </div>
         <div style="padding: 10px;">
             <input type="submit" class="btn btn-danger" style="width:150px;" value="Add to cart" name="cart">
         </div>
@@ -106,7 +121,7 @@ $email=$_SESSION['email'];
         </div>
         </form>
     </div>
-    <table  style="margin:-450px 100px 50px 600px;">
+    <table  style="margin:-450px 100px 450px 600px;">
             
             <?php
                         $q="select * from tblimages where pId='$id'";
@@ -123,7 +138,8 @@ $email=$_SESSION['email'];
 <?php
 if(isset($_POST['wish'])){
     $qty=$_REQUEST['qty'];
-    $q="insert into tblwishlist (pId,cEmail,qty) values('$id','$email','$qty')";
+    $size=$_REQUEST['size'];
+    $q="insert into tblwishlist (pId,cEmail,qty,size) values('$id','$email','$qty','$size')";
         $s= mysqli_query($conn, $q);
         if($s)
         {
@@ -132,7 +148,8 @@ if(isset($_POST['wish'])){
 }
 if(isset($_POST['cart'])){
     $qty=$_REQUEST['qty'];
-    $q="insert into tblcart (pId,cEmail,qty) values('$id','$email','$qty')";
+    $size=$_REQUEST['size'];
+    $q="insert into tblcart (pId,cEmail,qty,size) values('$id','$email','$qty','$size')";
         $s= mysqli_query($conn, $q);
         if($s)
         {
@@ -141,8 +158,8 @@ if(isset($_POST['cart'])){
 }
 if(isset($_POST['buy'])){
     $qty=$_REQUEST['qty'];
-    
-            echo '<script>location.href="buy.php?id='.$id.'&qty='.$qty.'"</script>';
+    $size=$_REQUEST['size'];
+            echo '<script>location.href="buy.php?id='.$id.'&qty='.$qty.'&size='.$size.'"</script>';
         
 }
 ?>

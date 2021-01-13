@@ -14,7 +14,7 @@ include '../connection.php';
 <div style="margin-top: 50px; margin-left: 150px; ">
     <h1 style="margin:50px;">Product</h1>
     <form method="POST" enctype="multipart/form-data">
-    <table>
+        <table>
         <tr>
             <td>Main Category</td>
             <td><select class="form-control" id="cat" name="cat">
@@ -41,23 +41,27 @@ include '../connection.php';
         </tr>
          <tr>
             <td>Description</td>
-            <td><textarea class="form-control" name="txtDesc"  ></textarea></td>
+            <td><textarea class="form-control" name="txtDesc" required="" ></textarea></td>
         </tr>
          <tr>
-            <td>Starting size</td>
-            <td><input type="number" class="form-control" value="0" name="txtSsize"  ></td>
+            <td>Available size</td>
+            <td><input type="checkbox" name="txtsize[]" value="XS" >XS&nbsp;&nbsp;&nbsp;
+            <input type="checkbox"  name="txtsize[]" value="S" >S&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="txtsize[]" value="M" >M&nbsp;&nbsp;&nbsp;
+            <input type="checkbox"  name="txtsize[]" value="L" >L&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="txtsize[]" value="XL" >XL&nbsp;&nbsp;&nbsp;
+            <input type="checkbox"  name="txtsize[]" value="XXL" >XXL&nbsp;&nbsp;&nbsp;
+            <input type="checkbox"  name="txtsize[]" value="XXXL" >XXXL&nbsp;&nbsp;&nbsp;
+            </td>
         </tr>
-         <tr>
-            <td>Ending size</td>
-            <td><input type="number" class="form-control" value="0" name="txtEsize"  ></td>
-        </tr>
+        
          <tr>
             <td>Fabric</td>
-            <td><input type="text" class="form-control" name="txtFabric" required="" ></td>
+            <td><input type="text" class="form-control" value="---" name="txtFabric" required="" ></td>
         </tr>
          <tr>
             <td>Wash type</td>
-            <td><input type="text" class="form-control" name="txtWash" required="" ></td>
+            <td><input type="text" class="form-control" value="---" name="txtWash" required="" ></td>
         </tr>
          <tr>
             <td>Highlight</td>
@@ -105,8 +109,7 @@ if(isset($_REQUEST['btnSubmit']))
     $subcat=$_REQUEST['subcat'];
     $name=$_REQUEST['txtName'];
     $desc=$_REQUEST['txtDesc'];
-    $ssize=$_REQUEST['txtSsize'];
-    $esize=$_REQUEST['txtEsize'];
+    
     $fabric=$_REQUEST['txtFabric'];
     $wash=$_REQUEST['txtWash'];
     $highlight=$_REQUEST['txtHighlight'];
@@ -114,10 +117,16 @@ if(isset($_REQUEST['btnSubmit']))
     
     
         
-        $q="insert into tblproduct (subid,pName,pDesc,pStartSize,pEndSize,pFabric,pWash,pHighlight,pRate,pStatus) values('$subcat','$name','$desc','$ssize','$esize','$fabric','$wash','$highlight','$rate','In stock')";
+        $q="insert into tblproduct (subid,pName,pDesc,pFabric,pWash,pHighlight,pRate,pStatus) values('$subcat','$name','$desc','$fabric','$wash','$highlight','$rate','In stock')";
         $s= mysqli_query($conn, $q);
         if($s)  
         {
+            foreach($_POST['txtsize'] as $check) {
+                echo $check;
+                 $q="insert into tblproductsize (pId,size) values((select max(pId) from tblproduct),'$check')";
+                    $s= mysqli_query($conn, $q);
+                    echo $q;
+            }
                 echo '<script>alert("Product added")</script>';
                 echo '<script>location.href="images.php"</script>';
         }

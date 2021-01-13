@@ -228,120 +228,100 @@ include 'connection.php';
             <li class="breadcrumb-item">
                 <a href="index.html">Home</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Blog</li>
+            <li class="breadcrumb-item active" aria-current="page">Reviews</li>
         </ol>
     </nav>
     <!-- //breadcrumbs -->
-    <section class="blog_wthree py-5">
-        <div class="container">
-            <h5 class="head_agileinfo text-center text-capitalize pb-5">
-                <span>B</span>log</h5>
-            <!-- blog row -->
-            <div class="row card-columns py-lg-5">
-                <div class="col-md-4 p-0">
-                    <div class="card">
-                        <a href="single.html">
-                            <img class="card-img-top" src="images/1.jpg" alt="Card image cap">
-                        </a>
-                        <div class="card-body">
-                            <h5 class="card-title blg_w3ls">
-                                <a href="single.html">Blog Title</a>
-                            </h5>
-                            <p class="card-text">Amazing.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <a href="single.html">
-                            <img class="card-img-top" src="images/2.jpg" alt="Card image cap">
-                        </a>
-                        <div class="card-body">
-                            <h5 class="card-title blg_w3ls">
-                                <a href="single.html">Blog Title</a>
-                            </h5>
-                            <p class="card-text">Easy going.</p>
-                            <p class="card-text">
-                                <small class="text-muted">Last updated 3 mins ago</small>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 0">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title blg_w3ls">
-                                <a href="single.html">Blog Title</a>
-                            </h5>
-                            <p class="card-text">Correct size and love it..
-                            </p>
-                            <p class="card-text">
-                                <small class="text-muted">Last updated 3 mins ago</small>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card text-white text-center">
-                        <a href="single.html">
-                            <img class="card-img" src="images/3.jpg" alt="Card image">
-                        </a>
-                        <div class="card text-center p-3">
-                            <blockquote class="blockquote mb-0">
-                                <p>Beautiful outfit.</p>
-                                <footer class="blockquote-footer">
-                                    <small>
-                                        Someone famous in
-                                        <cite title="Source Title">Source Title</cite>
-                                    </small>
-                                </footer>
-                            </blockquote>
-                        </div>
-                    </div>
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h5 class="card-title blg_w3ls">
-                                <a href="single.html">Blog Title</a>
-                            </h5>
-                            <p class="card-text">Lots of collection,affordable rate and lovely outfit.
-                            </p>
-                            <p class="card-text">
-                                <small class="text-muted">Last updated 3 mins ago</small>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 p-0">
-                    <div class="card">
-                        <a href="single.html">
-                            <img class="card-img" src="images/4.jpg" alt="Card image">
-                        </a>
-                    </div>
-                    <div class="card p-3 text-right">
-                        <blockquote class="blockquote mb-0">
-                            <p>Live Love Laugh Shop.</p>
-                            <footer class="blockquote-footer">
-                                <small class="text-muted">
-                                    Someone famous in
-                                    <cite title="Source Title">Source Title</cite>
-                                </small>
-                            </footer>
-                        </blockquote>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title blg_w3ls">
-                                <a href="single.html">Blog Title</a>
-                            </h5>
-                            <p class="card-text">Beautiful</p>
-                            <p class="card-text">
-                                <small class="text-muted">Last updated 3 mins ago</small>
-                            </p>
-                        </div>
-                        <a href="single.html">
-                            <img class="card-img-top" src="images/i1.jpg" alt="Card image cap">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+   <?php
+
+include 'connection.php';
+
+?>
+<style>
+    td,th{
+        padding: 10px;
+    }
+    th{
+        background-color: black;
+        color:white;
+    }
+</style>
+
+<table  style="margin:50px; max-width: 550px;">
+            
+            <?php
+                        $q="select tblproduct.*,tblrating.* from tblproduct,tblrating where tblproduct.pId=tblrating.pId";
+                        $s= mysqli_query($conn, $q);
+                        while($r= mysqli_fetch_array($s))
+                        {
+                            
+                            $qry="select * from tblimages where pId='".$r['pId']."'";
+                        $res= mysqli_query($conn, $qry);
+                    $row= mysqli_fetch_array($res);
+                        {
+                            
+                            echo '<tr><td><img src="'.$row['imgpath'].'" height="300px" width="300px"></td></tr>';
+                           
+                        }
+                            
+                            echo '<tr><td>PRODUCT :'.$r['pName'].'</td></tr>';
+                            echo '<tr><td>FABRIC : '.$r['pFabric'].'</td></tr>';
+                            echo '<tr><td>RATE :'.$r['pRate'].'</td></tr>';
+                            
+                            $qry="select avg(rating) from tblrating where pId='".$r['pId']."'";
+                            $res= mysqli_query($conn, $qry);
+                            $count= mysqli_num_rows($res);
+                            if($count>0)
+                            {
+                                $row= mysqli_fetch_array($res);
+                                $rating=$row[0];
+                                if($rating==1)
+                                {
+                                    echo '<tr><td><img src="images/filledstar.png" height="50px" width="50px">';
+                                    echo '<img src="images/unfilledstar.png" height="60px" width="60px">';
+                                    echo '<img src="images/unfilledstar.png" height="60px" width="60px">';
+                                    echo '<img src="images/unfilledstar.png" height="60px" width="60px">';
+                                    echo '<img src="images/unfilledstar.png" height="60px" width="60px"></td></tr>';
+                                }
+                                if($rating==2)
+                                {
+                                   echo '<tr><td><img src="images/filledstar.png" height="50px" width="50px">';
+                                   echo '<img src="images/filledstar.png" height="50px" width="50px">';
+                                 echo '<img src="images/unfilledstar.png" height="60px" width="60px">';
+                                 echo '<img src="images/unfilledstar.png" height="60px" width="60px">';
+                                 echo '<img src="images/unfilledstar.png" height="60px" width="60px"></td></tr>';
+                                }
+                                if($rating==3)
+                                {
+                                    echo '<tr><td><img src="images/filledstar.png" height="50px" width="50px">';
+                                    echo '<img src="images/filledstar.png" height="50px" width="50px">';
+                                    echo '<img src="images/filledstar.png" height="50px" width="50px">';
+                                    echo '<img src="images/unfilledstar.png" height="60px" width="60px">';
+                                    echo '<img src="images/unfilledstar.png" height="60px" width="60px"></td></tr>';
+                                }
+                                if($rating==4)
+                                {
+                                    echo '<tr><td><img src="images/filledstar.png" height="50px" width="50px">';
+                                    echo '<img src="images/filledstar.png" height="50px" width="50px">';
+                                    echo '<img src="images/filledstar.png" height="50px" width="50px">';
+                                    echo '<img src="images/filledstar.png" height="50px" width="50px">';
+                                   echo '<img src="images/unfilledstar.png" height="60px" width="60px"></td></tr>';
+                                }
+                                if($rating==5)
+                                {
+                                    echo '<tr><td><img src="images/filledstar.png" height="50px" width="50px">';
+                                    echo '<img src="images/filledstar.png" height="50px" width="50px">';
+                                    echo '<img src="images/filledstar.png" height="50px" width="50px">';
+                                    echo '<img src="images/filledstar.png" height="50px" width="50px">';
+                                    echo '<img src="images/filledstar.png" height="50px" width="50px">';
+                                }
+                            }
+                        }
+                   ?> 
+        </table>
+   
+</div>
+
     <!-- //blog row -->
  <footer>
         <div class="footerv2-w3ls">

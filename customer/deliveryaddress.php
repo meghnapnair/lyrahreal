@@ -47,7 +47,7 @@ $email=$_SESSION['email'];
         </tr>
          <tr>
             <td>Pin</td>
-            <td><input type="number" class="form-control" name="txtPin" required="" ></td>
+            <td><input type="number" class="form-control" name="txtPin" pattern="[6][0-9]{7}" required="" ></td>
         </tr>
          <tr>
             <td>Landmark</td>

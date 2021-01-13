@@ -67,10 +67,8 @@ include '../connection.php';
                         <a class="text-dark login_btn align-self-center mx-3" href="account.php" >
                             <i class="far fa-user"></i>
                         </a>
-                        <a href="cart.php">
-                            <img src="../images/cart.png" height="50px" width="50px;">
-                        </a>
-<!--                        <div class="cart-mainf">
+                        
+                        <div class="cart-mainf">
                             <div class="hubcart hubcart2 cart cart box_1">
                                 <form action="#" method="post">
                                     <input type="hidden" name="cmd" value="_cart">
@@ -80,7 +78,7 @@ include '../connection.php';
                                     </button>
                                 </form>
                             </div>
-                        </div>-->
+                        </div>
                         
                     </div>
                 </div>

@@ -19,7 +19,7 @@ $email=$_SESSION['email'];
 <table  style="margin:50px; max-width: 550px;">
             
             <?php
-                        $q="select tblproduct.*,tblsubcategory.subcategory,tblcategory.category,tblorderchild.* from tblproduct,tblcategory,tblsubcategory,tblorderchild where tblproduct.subid=tblsubcategory.subid and tblsubcategory.catid=tblcategory.catid and tblproduct.pId=tblorderchild.pId and tblorderchild.oid='$id'";
+                        $q="select tblproduct.*,tblsubcategory.subcategory,tblcategory.category,tblorderchild.*,tblordermaster.* from tblproduct,tblcategory,tblsubcategory,tblorderchild,tblordermaster where tblproduct.subid=tblsubcategory.subid and tblsubcategory.catid=tblcategory.catid and tblproduct.pId=tblorderchild.pId and tblorderchild.oid='$id' and tblordermaster.oid=tblorderchild.oid";
                         $s= mysqli_query($conn, $q);
                         while($r= mysqli_fetch_array($s))
                         {
@@ -33,6 +33,7 @@ $email=$_SESSION['email'];
                             echo '<tr><td>FABRIC : '.$r['pFabric'].'</td></tr>';
                             echo '<tr><td>RATE :'.$r['pRate'].'</td></tr>';
                             echo '<tr><td>QUANTITY :'.$r['qty'].'</td></tr>';
+                            if($r['oStatus']=="delivered")
                             $qry="select rating from tblrating where pId='".$r['pId']."' and email='$email'";
 //                            echo $qry;
                             $res= mysqli_query($conn, $qry);
@@ -43,39 +44,39 @@ $email=$_SESSION['email'];
                                 $rating=$row[0];
                                 if($rating==1)
                                 {
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
+                                    echo '<tr><td><img src="../images/filledstar.png" height="50px" width="50px">';
                                     echo '<img src="../images/unfilledstar.png" height="60px" width="60px">';
                                     echo '<img src="../images/unfilledstar.png" height="60px" width="60px">';
                                     echo '<img src="../images/unfilledstar.png" height="60px" width="60px">';
-                                    echo '<img src="../images/unfilledstar.png" height="60px" width="60px">';
+                                    echo '<img src="../images/unfilledstar.png" height="60px" width="60px"></td></tr>';
                                 }
                                 if($rating==2)
                                 {
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
+                                   echo '<tr><td><img src="../images/filledstar.png" height="50px" width="50px">';
+                                   echo '<img src="../images/filledstar.png" height="50px" width="50px">';
                                  echo '<img src="../images/unfilledstar.png" height="60px" width="60px">';
                                  echo '<img src="../images/unfilledstar.png" height="60px" width="60px">';
-                                 echo '<img src="../images/unfilledstar.png" height="60px" width="60px">';
+                                 echo '<img src="../images/unfilledstar.png" height="60px" width="60px"></td></tr>';
                                 }
                                 if($rating==3)
                                 {
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
+                                    echo '<tr><td><img src="../images/filledstar.png" height="50px" width="50px">';
                                     echo '<img src="../images/filledstar.png" height="50px" width="50px">';
                                     echo '<img src="../images/filledstar.png" height="50px" width="50px">';
                                     echo '<img src="../images/unfilledstar.png" height="60px" width="60px">';
-                                    echo '<img src="../images/unfilledstar.png" height="60px" width="60px">';
+                                    echo '<img src="../images/unfilledstar.png" height="60px" width="60px"></td></tr>';
                                 }
                                 if($rating==4)
                                 {
+                                    echo '<tr><td><img src="../images/filledstar.png" height="50px" width="50px">';
                                     echo '<img src="../images/filledstar.png" height="50px" width="50px">';
                                     echo '<img src="../images/filledstar.png" height="50px" width="50px">';
                                     echo '<img src="../images/filledstar.png" height="50px" width="50px">';
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
-                                    echo '<img src="../images/unfilledstar.png" height="60px" width="60px">';
+                                   echo '<img src="../images/unfilledstar.png" height="60px" width="60px"></td></tr>';
                                 }
                                 if($rating==5)
                                 {
-                                    echo '<img src="../images/filledstar.png" height="50px" width="50px">';
+                                    echo '<tr><td><img src="../images/filledstar.png" height="50px" width="50px">';
                                     echo '<img src="../images/filledstar.png" height="50px" width="50px">';
                                     echo '<img src="../images/filledstar.png" height="50px" width="50px">';
                                     echo '<img src="../images/filledstar.png" height="50px" width="50px">';
